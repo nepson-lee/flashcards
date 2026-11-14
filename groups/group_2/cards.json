@@ -1,0 +1,11 @@
+[
+  { "word": "book", "zh": "書", "lines": [["Amy", "Is this your book?"], ["Ben", "Yes, it is my book. Thanks!"]] },
+  { "word": "pencil", "zh": "鉛筆", "lines": [["Tom", "Can I use your pencil?"], ["Mary", "Sure. Here is my pencil."]] },
+  { "word": "eraser", "zh": "橡皮擦", "lines": [["Ben", "Oh no! I need an eraser."], ["Amy", "You can use my eraser."]] },
+  { "word": "paper", "zh": "紙", "lines": [["Amy", "Mom, can I have some paper?"], ["Mom", "Sure. Here is some paper."]] },
+  { "word": "desk", "zh": "書桌；課桌", "lines": [["Miss Wang", "Put your book on the desk."], ["Ben", "OK. It is on my desk."]] },
+  { "word": "backpack", "zh": "背包；書包", "lines": [["Mom", "Where is your backpack?"], ["Tony", "My backpack is here, Mom."]] },
+  { "word": "chair", "zh": "椅子", "lines": [["Kate", "Dad, can I sit on this chair?"], ["Dad", "Yes. It is your chair."]] },
+  { "word": "teacher", "zh": "老師", "lines": [["Ben", "Who is your teacher?"], ["Amy", "Miss Wang is my teacher."]] },
+  { "word": "student", "zh": "學生", "lines": [["Miss Wang", "Are you a new student?"], ["Tom", "Yes, I am a new student."]] }
+]

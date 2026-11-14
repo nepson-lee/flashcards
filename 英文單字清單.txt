@@ -12,3 +12,16 @@
 * o'clock
 
 =================================================
+
+2026.11.14
+# group_2/
+
+* book
+* pencil
+* eraser
+* paper
+* desk
+* backpack
+* chair  
+* teacher
+* student

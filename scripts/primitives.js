@@ -159,6 +159,78 @@ function house(x, y, litWindow = false) {
 const ground = (y = 178) => `<line x1="8" y1="${y}" x2="292" y2="${y}" ${S}/>`;
 const grass = (xs, y = 178) => xs.map((x) => `<path d="M${x},${y} l-3,-7 M${x},${y} l0,-9 M${x},${y} l3,-7" ${S} stroke-width="2"/>`).join('');
 
+// ---------- school objects ----------
+// Closed book centred at (x, y), with a black spine on the left.
+function book(x, y, w = 40, h = 30, title = true) {
+  return `<rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="3" fill="#fff" ${S}/>` +
+    `<rect x="${x - w / 2}" y="${y - h / 2}" width="${w * 0.18}" height="${h}" rx="2" fill="#000"/>` +
+    (title ? `<path d="M${x - w * 0.15},${y - h * 0.18} H${x + w * 0.32} M${x - w * 0.15},${y + h * 0.1} H${x + w * 0.2}" ${S} stroke-width="2"/>` : '');
+}
+// Open book lying flat, centred at (x, y).
+function openBook(x, y, w = 60) {
+  const h = w * 0.45;
+  return `<path d="M${x},${y - h / 2 + 4} Q${x - w * 0.25},${y - h / 2 - 4} ${x - w / 2},${y - h / 2} V${y + h / 2} Q${x - w * 0.25},${y + h / 2 - 6} ${x},${y + h / 2} Z" fill="#fff" ${S}/>` +
+    `<path d="M${x},${y - h / 2 + 4} Q${x + w * 0.25},${y - h / 2 - 4} ${x + w / 2},${y - h / 2} V${y + h / 2} Q${x + w * 0.25},${y + h / 2 - 6} ${x},${y + h / 2} Z" fill="#fff" ${S}/>` +
+    [0.15, 0.35, 0.55].map((f) => `<path d="M${x - w * 0.4},${y - h / 2 + h * f + 4} H${x - w * 0.1} M${x + w * 0.1},${y - h / 2 + h * f + 4} H${x + w * 0.4}" ${S} stroke-width="1.5"/>`).join('');
+}
+// Pencil centred at (x, y), length len, rotated by angle degrees (0 = tip pointing right).
+function pencil(x, y, len = 60, angle = 0) {
+  const h = len * 0.16, b = len * 0.62;
+  return `<g transform="translate(${x},${y}) rotate(${angle})">` +
+    `<rect x="${-len / 2}" y="${-h / 2}" width="${len * 0.12}" height="${h}" rx="2" fill="#000"/>` +
+    `<rect x="${-len / 2 + len * 0.12}" y="${-h / 2}" width="${len * 0.08}" height="${h}" fill="#fff" ${S} stroke-width="2"/>` +
+    `<rect x="${-len / 2 + len * 0.2}" y="${-h / 2}" width="${b}" height="${h}" fill="#fff" ${S} stroke-width="2.5"/>` +
+    `<line x1="${-len / 2 + len * 0.2}" y1="0" x2="${len * 0.32}" y2="0" ${S} stroke-width="1.5"/>` +
+    `<path d="M${len * 0.32},${-h / 2} L${len / 2},0 L${len * 0.32},${h / 2} Z" fill="#fff" ${S} stroke-width="2.5"/>` +
+    `<path d="M${len * 0.44},${-h * 0.17} L${len / 2},0 L${len * 0.44},${h * 0.17} Z" fill="#000"/></g>`;
+}
+// Rubber eraser centred at (x, y), half covered by a black sleeve.
+function eraser(x, y, w = 30, h = 16, angle = 0) {
+  return `<g transform="translate(${x},${y}) rotate(${angle})">` +
+    `<rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="4" fill="#fff" ${S}/>` +
+    `<rect x="${-w * 0.05}" y="${-h / 2}" width="${w * 0.55}" height="${h}" rx="2" fill="#000"/></g>`;
+}
+// Sheet of paper centred at (x, y) with a folded corner and optional writing lines.
+function paper(x, y, w = 40, h = 52, lines = true, angle = 0) {
+  const f = w * 0.25;
+  return `<g transform="translate(${x},${y}) rotate(${angle})">` +
+    `<path d="M${-w / 2},${-h / 2} H${w / 2 - f} L${w / 2},${-h / 2 + f} V${h / 2} H${-w / 2} Z" fill="#fff" ${S} stroke-width="2.5"/>` +
+    `<path d="M${w / 2 - f},${-h / 2} V${-h / 2 + f} H${w / 2}" fill="none" ${S} stroke-width="2"/>` +
+    (lines ? [0.15, 0.35, 0.55, 0.75].map((k) => `<line x1="${-w * 0.32}" y1="${-h / 2 + h * k + 4}" x2="${w * 0.32}" y2="${-h / 2 + h * k + 4}" ${S} stroke-width="1.5"/>`).join('') : '') +
+    `</g>`;
+}
+// School desk: top surface at y, drawer box under it, legs down to y + 46.
+function desk(x, y, w = 90) {
+  return `<rect x="${x}" y="${y}" width="${w}" height="10" rx="2" fill="#fff" ${S}/>` +
+    `<rect x="${x + 8}" y="${y + 10}" width="${w - 16}" height="16" fill="#fff" ${S} stroke-width="2.5"/>` +
+    `<line x1="${x + 14}" y1="${y + 26}" x2="${x + 14}" y2="${y + 46}" ${S}/><line x1="${x + w - 14}" y1="${y + 26}" x2="${x + w - 14}" y2="${y + 46}" ${S}/>`;
+}
+// Side-view chair standing on floor y; seat faces right (pass flip=true to face left).
+function chair(x, y, s = 1, flip = false) {
+  return `<g transform="translate(${x},${y}) scale(${flip ? -s : s},${s})">` +
+    `<line x1="-18" y1="0" x2="-18" y2="-80" ${S} stroke-width="4"/>` +
+    `<rect x="-24" y="-80" width="12" height="32" rx="4" fill="#fff" ${S}/>` +
+    `<rect x="-20" y="-44" width="44" height="8" rx="2" fill="#fff" ${S}/>` +
+    `<line x1="20" y1="-36" x2="20" y2="0" ${S} stroke-width="4"/><line x1="-16" y1="-36" x2="-16" y2="0" ${S}/></g>`;
+}
+// Backpack standing on floor y.
+function backpack(x, y, s = 1) {
+  return `<g transform="translate(${x},${y}) scale(${s})">` +
+    `<path d="M-12,-70 q12,-16 24,0" fill="none" ${S} stroke-width="4"/>` +
+    `<rect x="-26" y="-70" width="52" height="70" rx="16" fill="#fff" ${S}/>` +
+    `<path d="M-26,-46 Q0,-56 26,-46" fill="none" ${S} stroke-width="2.5"/>` +
+    `<rect x="-17" y="-30" width="34" height="24" rx="6" fill="#000"/>` +
+    `<line x1="-10" y1="-22" x2="10" y2="-22" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>` +
+    `<circle cx="0" cy="-58" r="2.5" fill="#000"/></g>`;
+}
+// Blackboard: black panel with white chalk text, top-left at (x, y).
+function blackboard(x, y, w = 110, h = 60, text = 'ABC') {
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#000" ${S}/>` +
+    `<rect x="${x + 5}" y="${y + 5}" width="${w - 10}" height="${h - 10}" rx="2" fill="none" stroke="#fff" stroke-width="1.5"/>` +
+    `<text x="${x + w / 2}" y="${y + h / 2 + 8}" font-family="Comic Sans MS, Arial" font-weight="bold" font-size="${Math.min(24, h * 0.4)}" fill="#fff" text-anchor="middle">${text}</text>` +
+    `<line x1="${x + 4}" y1="${y + h + 4}" x2="${x + w - 4}" y2="${y + h + 4}" ${S}/>`;
+}
+
 function svg(inner) {
   inner = inner.replace(/stroke-width="3"( stroke-linecap="round" stroke-linejoin="round")([^>]*?) stroke-width="([\d.]+)"/g, 'stroke-width="$3"$1$2');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">` +
@@ -168,4 +240,5 @@ function svg(inner) {
 module.exports = {
   S, person, sun, halfSun, moon, star, clock, table, bowl, chopsticks, plateEgg, glass, toast,
   windowFrame, cloud, bird, tree, house, ground, grass, svg,
+  book, openBook, pencil, eraser, paper, desk, chair, backpack, blackboard,
 };
