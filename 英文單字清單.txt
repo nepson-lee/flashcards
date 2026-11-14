@@ -1,0 +1,14 @@
+2026.11.14
+# group_1/
+
+* morning
+* noon
+* afternoon 
+* evening
+* night
+* breakfast 
+* lunch
+* dinner
+* o'clock
+
+=================================================

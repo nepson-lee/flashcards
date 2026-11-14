@@ -1,0 +1,12 @@
+{
+  "name": "flashcards",
+  "private": true,
+  "scripts": {
+    "words": "node scripts/list-words.js",
+    "build": "node scripts/build.js"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "docx": "^9.0.0"
+  }
+}

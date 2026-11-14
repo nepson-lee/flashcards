@@ -1,0 +1,11 @@
+[
+  { "word": "morning", "zh": "早上", "lines": [["Tony", "Good morning, Mary."], ["Mary", "Good morning, Tony."]] },
+  { "word": "noon", "zh": "中午", "lines": [["Mom", "It is noon. Come and eat!"], ["Ben", "OK, Mom. I am hungry."]] },
+  { "word": "afternoon", "zh": "下午", "lines": [["Amy", "Good afternoon, Miss Wang."], ["Miss Wang", "Good afternoon, Amy."]] },
+  { "word": "evening", "zh": "傍晚；晚上", "lines": [["Kate", "Good evening, Dad."], ["Dad", "Good evening, Kate. I am home!"]] },
+  { "word": "night", "zh": "夜晚", "lines": [["Mom", "Good night, Sam."], ["Sam", "Good night, Mom."]] },
+  { "word": "breakfast", "zh": "早餐", "lines": [["Mom", "What do you want for breakfast?"], ["Lily", "Milk and an egg, please."]] },
+  { "word": "lunch", "zh": "午餐", "lines": [["Ben", "What is for lunch?"], ["Amy", "Rice and fish. Yummy!"]] },
+  { "word": "dinner", "zh": "晚餐", "lines": [["Dad", "Dinner is ready!"], ["Kids", "Yay! Let's eat."]] },
+  { "word": "o'clock", "zh": "…點鐘", "lines": [["Tom", "What time is it?"], ["Mary", "It's seven o'clock."]] }
+]
