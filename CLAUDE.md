@@ -11,7 +11,7 @@ This repo makes printable English vocabulary flashcards for elementary-school le
 
 Cards are printed 9 to an A4 page (3 × 3) in a Word `.docx`, with dashed borders as cut lines.
 
-The input is `英文單字清單.txt`. Each group in it is a `# group_N` header followed by `* word` lines. The user generates a group with the project skill **`/flashcard group_N`** (`.claude/skills/flashcard/SKILL.md`). That skill has the full step-by-step workflow and the content rules, so keep it in sync with any pipeline change.
+The input is `英文單字清單.txt`. Each group in it is a `# group_N` header followed by `* word` lines, and optionally a `對話範例:` section whose `* question` bullets (with the answer on the indented line below) set the sentence patterns the group's dialogues must follow. `list-words.js` returns these as `examples`. The user generates a group with the project skill **`/flashcard group_N`** (`.claude/skills/flashcard/SKILL.md`). That skill has the full step-by-step workflow and the content rules, so keep it in sync with any pipeline change.
 
 ## Commands
 

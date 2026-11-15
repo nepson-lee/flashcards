@@ -1,0 +1,11 @@
+[
+  { "word": "living room", "zh": "客廳", "lines": [["Amy", "What is Dad doing in the living room?"], ["Ben", "Dad is reading in the living room."]] },
+  { "word": "dining room", "zh": "餐廳；飯廳", "lines": [["Mom", "What is Amy doing in the dining room?"], ["Tony", "Amy is eating in the dining room."]] },
+  { "word": "kitchen", "zh": "廚房", "lines": [["Ben", "What is Mom doing in the kitchen?"], ["Amy", "Mom is cooking in the kitchen."]] },
+  { "word": "bathroom", "zh": "浴室；廁所", "lines": [["Mom", "What is Ben doing in the bathroom?"], ["Amy", "Ben is singing in the bathroom."]] },
+  { "word": "shower", "zh": "淋浴；蓮蓬頭", "lines": [["Mom", "Where do you take a shower?"], ["Tony", "I take a shower in the bathroom."]] },
+  { "word": "towel", "zh": "毛巾", "lines": [["Ben", "Mom, where is my towel?"], ["Mom", "Your towel is in the bathroom."]] },
+  { "word": "drawer", "zh": "抽屜", "lines": [["Tony", "Where is the toy drawer?"], ["Mom", "The toy drawer is under the bed."]] },
+  { "word": "soup", "zh": "湯", "lines": [["Ben", "Where do you eat soup?"], ["Mary", "I eat soup in the kitchen."]] },
+  { "word": "spoon", "zh": "湯匙", "lines": [["Amy", "Where is the spoon?"], ["Dad", "The spoon is in the drawer."]] }
+]

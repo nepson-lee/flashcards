@@ -231,6 +231,116 @@ function blackboard(x, y, w = 110, h = 60, text = 'ABC') {
     `<line x1="${x + 4}" y1="${y + h + 4}" x2="${x + w - 4}" y2="${y + h + 4}" ${S}/>`;
 }
 
+// ---------- home objects ----------
+// Spoon centred at (x, y), length len, rotated by angle degrees (0 = bowl pointing right).
+function spoon(x, y, len = 50, angle = 0) {
+  return `<g transform="translate(${x},${y}) rotate(${angle})">` +
+    `<line x1="${-len / 2}" y1="0" x2="${len * 0.18}" y2="0" ${S} stroke-width="${Math.max(3, len * 0.08)}"/>` +
+    `<ellipse cx="${len * 0.32}" cy="0" rx="${len * 0.18}" ry="${len * 0.12}" fill="#fff" ${S}/></g>`;
+}
+// Striped towel hanging from a rail; top-left of the towel at (x, y).
+function towel(x, y, w = 40, h = 56, rail = true) {
+  return (rail ? `<line x1="${x - 12}" y1="${y}" x2="${x + w + 12}" y2="${y}" ${S} stroke-width="4"/>` +
+      `<circle cx="${x - 12}" cy="${y}" r="4" fill="#000"/><circle cx="${x + w + 12}" cy="${y}" r="4" fill="#000"/>` : '') +
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#fff" ${S}/>` +
+    `<rect x="${x}" y="${y + h * 0.62}" width="${w}" height="${h * 0.12}" fill="#000"/>` +
+    `<path d="M${x + 3},${y + h + 4} v4 M${x + w * 0.35},${y + h + 4} v4 M${x + w * 0.65},${y + h + 4} v4 M${x + w - 3},${y + h + 4} v4" ${S} stroke-width="2"/>`;
+}
+// Sofa standing on floor y, left edge x, width w. Seat cushion top at y - 34.
+// Draw sofaBack() before a sitting person and sofaFront() after, so the person sits in it.
+function sofaBack(x, y, w = 130) {
+  return `<rect x="${x + 10}" y="${y - 82}" width="${w - 20}" height="54" rx="10" fill="#fff" ${S}/>`;
+}
+function sofaFront(x, y, w = 130) {
+  return `<rect x="${x + 10}" y="${y - 34}" width="${w - 20}" height="24" rx="5" fill="#fff" ${S}/>` +
+    `<rect x="${x}" y="${y - 52}" width="20" height="44" rx="8" fill="#fff" ${S}/>` +
+    `<rect x="${x + w - 20}" y="${y - 52}" width="20" height="44" rx="8" fill="#fff" ${S}/>` +
+    `<rect x="${x + 8}" y="${y - 8}" width="7" height="8" fill="#000"/><rect x="${x + w - 15}" y="${y - 8}" width="7" height="8" fill="#000"/>`;
+}
+const sofa = (x, y, w = 130) => sofaBack(x, y, w) + sofaFront(x, y, w);
+// Television on a low cabinet standing on floor y, centred at x.
+function tv(x, y, w = 64) {
+  const h = w * 0.62;
+  return `<rect x="${x - w / 2 - 6}" y="${y - 30}" width="${w + 12}" height="30" fill="#fff" ${S}/>` +
+    `<line x1="${x}" y1="${y - 30}" x2="${x}" y2="${y}" ${S} stroke-width="2"/>` +
+    `<line x1="${x - 6}" y1="${y - 34}" x2="${x + 6}" y2="${y - 34}" ${S} stroke-width="5"/>` +
+    `<rect x="${x - w / 2}" y="${y - 36 - h}" width="${w}" height="${h}" rx="4" fill="#000" ${S}/>` +
+    `<path d="M${x - w / 2 + 8},${y - 36 - h + 12} l10,-6" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`;
+}
+// Cooking pot; (x, y) = centre of its bottom.
+function pot(x, y, w = 50, steam = true) {
+  return (steam ? `<path d="M${x - 10},${y - 38} q-6,-8 0,-16 q6,-8 0,-16 M${x + 8},${y - 38} q-6,-8 0,-16 q6,-8 0,-16" fill="none" ${S} stroke-width="2"/>` : '') +
+    `<rect x="${x - w / 2}" y="${y - 30}" width="${w}" height="30" rx="5" fill="#fff" ${S}/>` +
+    `<path d="M${x - w / 2},${y - 22} h-10 M${x + w / 2},${y - 22} h10" ${S} stroke-width="4"/>` +
+    `<rect x="${x - w / 2 - 3}" y="${y - 34}" width="${w + 6}" height="6" rx="3" fill="#000"/>`;
+}
+// Kitchen stove standing on floor y, left edge x, width w; top surface at y - 70.
+function stove(x, y, w = 90) {
+  return `<rect x="${x}" y="${y - 70}" width="${w}" height="70" rx="3" fill="#fff" ${S}/>` +
+    `<rect x="${x + 12}" y="${y - 46}" width="${w - 24}" height="36" rx="3" fill="#fff" ${S} stroke-width="2.5"/>` +
+    `<line x1="${x + 22}" y1="${y - 40}" x2="${x + w - 22}" y2="${y - 40}" ${S} stroke-width="4"/>` +
+    [0.25, 0.5, 0.75].map((f) => `<circle cx="${x + w * f}" cy="${y - 58}" r="4" fill="#000"/>`).join('');
+}
+// Bathtub standing on floor y, left edge x, width w; rim at y - 62.
+function bathtub(x, y, w = 140) {
+  return `<path d="M${x},${y - 58} H${x + w} V${y - 34} Q${x + w},${y - 10} ${x + w - 24},${y - 10} H${x + 24} Q${x},${y - 10} ${x},${y - 34} Z" fill="#fff" ${S}/>` +
+    `<rect x="${x - 4}" y="${y - 62}" width="${w + 8}" height="8" rx="4" fill="#fff" ${S}/>` +
+    `<path d="M${x + 22},${y - 10} l-6,10 M${x + w - 22},${y - 10} l6,10" ${S} stroke-width="4"/>`;
+}
+// Soap bubbles: list of [x, y, r].
+const bubbles = (list) => list.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" ${S} stroke-width="2"/>`).join('');
+// Shower head on a pipe coming from the wall at (x, y), water falling down to y + drop.
+function showerHead(x, y, drop = 110) {
+  let water = '';
+  for (let i = -2; i <= 2; i++) water += `<line x1="${x + 30 + i * 6}" y1="${y + 30}" x2="${x + 30 + i * 14}" y2="${y + drop}" stroke="#000" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round"/>`;
+  return `<path d="M${x},${y} H${x + 30} V${y + 10}" fill="none" ${S} stroke-width="5"/>` +
+    `<path d="M${x + 14},${y + 24} Q${x + 30},${y + 4} ${x + 46},${y + 24} Z" fill="#000" ${S}/>` + water;
+}
+// Bed seen from the side, standing on floor y, left edge x. A drawer sits under it;
+// with drawerOpen it is pulled out towards the viewer and `inside` (items) shows above its front.
+function bed(x, y, w = 150, drawerOpen = false, inside = '') {
+  const dx = drawerOpen ? 18 : 0, dy = drawerOpen ? 10 : 0;
+  return `<rect x="${x}" y="${y - 96}" width="12" height="96" rx="3" fill="#fff" ${S}/>` +
+    `<rect x="${x + w - 12}" y="${y - 66}" width="12" height="66" rx="3" fill="#fff" ${S}/>` +
+    `<rect x="${x + 12}" y="${y - 58}" width="${w - 24}" height="18" fill="#fff" ${S}/>` +
+    `<ellipse cx="${x + 32}" cy="${y - 66}" rx="17" ry="9" fill="#fff" ${S}/>` +
+    `<path d="M${x + 46},${y - 58} Q${x + 46},${y - 72} ${x + 64},${y - 70} H${x + w - 14} V${y - 58} Z" fill="#fff" ${S}/>` +
+    `<rect x="${x + 12}" y="${y - 40}" width="${w - 24}" height="40" fill="#000"/>` +
+    (drawerOpen ? `<path d="M${x + 24},${y - 36} H${x + w - 24} L${x + w - 24 + dx},${y - 30 + dy} H${x + 24 + dx} Z" fill="#fff" ${S}/>` + inside : '') +
+    `<rect x="${x + 24 + dx}" y="${y - 32 + dy}" width="${w - 48}" height="${28 - dy / 2}" rx="2" fill="#fff" ${S}/>` +
+    `<rect x="${x + w / 2 - 12 + dx}" y="${y - 21 + dy}" width="24" height="6" rx="3" fill="#000"/>`;
+}
+// Chest of drawers standing on floor y, left edge x. n drawers; openIndex (0 = top) is
+// pulled out towards the viewer and `inside` (items drawn by the caller) shows in it.
+function drawers(x, y, w = 80, h = 90, n = 3, openIndex = -1, inside = '') {
+  const dh = (h - 8) / n;
+  let s = `<rect x="${x}" y="${y - h}" width="${w}" height="${h}" rx="3" fill="#fff" ${S}/>`;
+  for (let i = 0; i < n; i++) {
+    if (i === openIndex) continue;
+    const top = y - h + 4 + i * dh;
+    s += `<rect x="${x + 4}" y="${top}" width="${w - 8}" height="${dh - 4}" rx="2" fill="#fff" ${S} stroke-width="2.5"/>` +
+      `<rect x="${x + w / 2 - 10}" y="${top + dh / 2 - 5}" width="20" height="6" rx="3" fill="#000"/>`;
+  }
+  if (openIndex >= 0) { // drawn last so it sits in front of the drawer below it
+    const top = y - h + 4 + openIndex * dh;
+    s += `<rect x="${x + 4}" y="${top}" width="${w - 8}" height="${dh - 4}" fill="#000"/>` +
+      `<path d="M${x + 4},${top + 4} H${x + w - 4} L${x + w + 8},${top + 20} H${x - 8} Z" fill="#fff" ${S}/>` +
+      inside +
+      `<rect x="${x - 8}" y="${top + 20}" width="${w + 16}" height="${dh - 4}" rx="2" fill="#fff" ${S}/>` +
+      `<rect x="${x + w / 2 - 10}" y="${top + 20 + dh / 2 - 5}" width="20" height="6" rx="3" fill="#000"/>`;
+  }
+  return s;
+}
+// Musical note; (x, y) = note head.
+const note = (x, y, s = 1) => `<g transform="translate(${x},${y}) scale(${s})"><ellipse cx="0" cy="0" rx="6" ry="4.5" fill="#000" transform="rotate(-20)"/><path d="M5,-2 V-24 q6,4 10,10" fill="none" ${S} stroke-width="2.5"/></g>`;
+// Thin square wall tiles filling the rectangle (x, y, w, h).
+function tiles(x, y, w, h, step = 24) {
+  let s = '';
+  for (let tx = x + step; tx < x + w; tx += step) s += `<line x1="${tx}" y1="${y}" x2="${tx}" y2="${y + h}" stroke="#000" stroke-width="1"/>`;
+  for (let ty = y + step; ty < y + h; ty += step) s += `<line x1="${x}" y1="${ty}" x2="${x + w}" y2="${ty}" stroke="#000" stroke-width="1"/>`;
+  return s;
+}
+
 function svg(inner) {
   inner = inner.replace(/stroke-width="3"( stroke-linecap="round" stroke-linejoin="round")([^>]*?) stroke-width="([\d.]+)"/g, 'stroke-width="$3"$1$2');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">` +
@@ -241,4 +351,5 @@ module.exports = {
   S, person, sun, halfSun, moon, star, clock, table, bowl, chopsticks, plateEgg, glass, toast,
   windowFrame, cloud, bird, tree, house, ground, grass, svg,
   book, openBook, pencil, eraser, paper, desk, chair, backpack, blackboard,
+  spoon, towel, sofa, sofaBack, sofaFront, tv, pot, stove, bathtub, bubbles, showerHead, bed, drawers, note, tiles,
 };

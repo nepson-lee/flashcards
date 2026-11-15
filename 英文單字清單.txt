@@ -25,3 +25,33 @@
 * chair  
 * teacher
 * student
+
+===========================================
+
+2026.11.15
+# group_3/
+
+* living room
+* dining room
+* kitchen
+* bathroom
+* shower
+* towel
+* drawer
+* soup
+* spoon
+
+對話範例:
+請依照下列的句型來設計對話.
+
+* Where do you take a shower ?
+  I take a shower in the bathroom.
+  
+* Where do you eat ?
+  I eat in the dining room.
+  
+* Where is the spoon ?
+  It is in the drawer. 
+
+* What is Mom doing in the kitchen?
+  Mom is cooking in the kitchen.

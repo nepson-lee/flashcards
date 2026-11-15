@@ -13,12 +13,18 @@ All paths are relative to the repo root. Run `npm install` first if `node_module
 ## Steps
 
 1. **Read the word list**
-   `node scripts/list-words.js $ARGUMENTS` → `{ "group": "group_N", "words": [...] }`. Use the normalized `group` value from here on.
+   `node scripts/list-words.js $ARGUMENTS` → `{ "group": "group_N", "words": [...], "examples": [[q, a], ...], "notes": [...] }`. Use the normalized `group` value from here on.
+   - `examples` comes from an optional `對話範例:` section at the end of the group in `英文單字清單.txt` (each `* question` bullet plus the indented answer line(s) under it). `notes` holds any free-text instructions written there (e.g. `請依照下列的句型來設計對話.`) — follow them. Both are empty when the group has no such section.
 
 2. **Write `groups/<group>/cards.json`** — one entry per word, in list order:
    `{ "word": "...", "zh": "繁體中文意思", "lines": [["Name", "sentence"], ["Name", "sentence"]] }`
    - If the file already exists, keep entries for words still in the list and only add the new ones (the user may have hand-edited them).
    - Dialogue: two lines of natural everyday conversation (greetings, family, school, meals) between named speakers (Tony, Mary, Ben, Amy, Mom, Dad, Miss Wang…).
+   - **If `examples` is not empty, every dialogue in this group must follow one of those sentence patterns** (the group is drilling that pattern, so don't fall back to free-form chat):
+     - Line 1 uses the same question form as an example — same question word and structure (`Where do you …?`, `Where is the …?`, `What is Mom doing …?`).
+     - Line 2 answers it with the matching answer form. For a `Where` question the answer must name a place; best is "someone does something in/at some place" (`I take a shower in the bathroom.`, `Mom is cooking in the kitchen.`). For `Where is the X?` answer with a place, `The X is in/on/under the …` (use `The X` rather than `It` so the word is on both lines).
+     - Swap in the target word (as the place, the object, or the activity) and pick the pattern that fits that word most naturally; spread the patterns across the group rather than using one for every card.
+     - The two lines are still a question from one speaker and the answer from the other, and both lines still contain the target word (e.g. `Where is the towel?` / `The towel is in the bathroom.`). The example lines themselves may be reused for a card when they already contain its word.
    - Every line must contain the target word exactly as spelled (the builder bolds + underlines that match).
    - Use only words from the ~500 most common words for elementary-school children. Short sentences, max ~32 characters per line so the card does not overflow.
    - `zh`: short Traditional Chinese gloss (e.g. `早餐`, `傍晚；晚上`).
