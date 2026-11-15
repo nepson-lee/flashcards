@@ -41,7 +41,7 @@
 * soup
 * spoon
 
-對話範例:
+[對話範例]
 請依照下列的句型來設計對話.
 
 * Where do you take a shower ?
@@ -55,3 +55,34 @@
 
 * What is Mom doing in the kitchen?
   Mom is cooking in the kitchen.
+
+========================================
+
+2026.11.15
+# group_4/
+
+* boy
+* girl
+* fish
+* pork
+* beef
+* cup
+* plate
+* noodles
+* rice
+
+[對話範例]
+* What is the boy doing ?
+  He is climbing a tree.
+  
+* What does the girl look like? 
+  The girl has long brown hair.
+  
+* What do you want to eat for lunch?
+  I want to eat a bowl of rice and some pork balls.
+
+* Do you like to eat some noodles ?
+  Yes, I like to eat beef noodles.
+  
+[圖像風格]
+宮崎駿畫風

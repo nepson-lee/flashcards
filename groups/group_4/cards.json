@@ -1,0 +1,11 @@
+[
+  { "word": "boy", "zh": "男孩", "lines": [["Amy", "What is the boy doing?"], ["Mom", "He is climbing a tree."]] },
+  { "word": "girl", "zh": "女孩", "lines": [["Ben", "What does the girl look like?"], ["Amy", "The girl has long brown hair."]] },
+  { "word": "fish", "zh": "魚", "lines": [["Mom", "What is Tony doing?"], ["Dad", "He is catching a fish."]] },
+  { "word": "pork", "zh": "豬肉", "lines": [["Mom", "Do you like to eat pork?"], ["Ben", "Yes, I like to eat pork buns."]] },
+  { "word": "beef", "zh": "牛肉", "lines": [["Mom", "What would you like to eat for dinner?"], ["Tony", "I would like some beef, please."]] },
+  { "word": "cup", "zh": "杯子", "lines": [["Amy", "What does your cup look like?"], ["Mary", "My cup has a little cat on it."]] },
+  { "word": "plate", "zh": "盤子", "lines": [["Dad", "What is Amy doing?"], ["Mom", "She is washing a plate."]] },
+  { "word": "noodles", "zh": "麵", "lines": [["Amy", "Do you like to eat noodles?"], ["Dad", "Yes, I like to eat beef noodles."]] },
+  { "word": "rice", "zh": "米飯", "lines": [["Mom", "What would you like to eat for lunch?"], ["Ben", "I would like a bowl of rice."]] }
+]

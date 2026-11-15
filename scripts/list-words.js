@@ -1,10 +1,14 @@
 // Print the words of one group from 英文單字清單.txt as JSON.
 // Usage: node scripts/list-words.js group_1   (also accepts "1" or "Flashcards_group_1")
 //
-// A group may end with an optional "對話範例:" (dialogue examples) section. Each
-// "* question" bullet there starts one example; the indented lines under it are
-// the following lines of that example. Free text before the first bullet goes
-// to "notes". Output: { group, words, examples: [[line, line], ...], notes }.
+// After its words a group may have optional sections, each started by a header
+// line "[對話範例]" / "對話範例:" or "[圖像風格]" / "圖像風格:".
+// - 對話範例 (dialogue examples): each "* question" bullet starts one example; the
+//   indented lines under it are the following lines of that example. Free text
+//   before the first bullet goes to "notes".
+// - 圖像風格 (picture style): all text in it (header remainder included) is joined
+//   into "style".
+// Output: { group, words, examples: [[line, line], ...], notes: [...], style: "..." }.
 const fs = require('fs');
 const path = require('path');
 
@@ -29,19 +33,20 @@ for (const raw of text.split(/\r?\n/)) {
   const line = raw.trim();
   const h = line.match(/^#+\s*(.+)$/);
   if (h) {
-    current = { words: [], examples: [], notes: [] };
+    current = { words: [], examples: [], notes: [], style: [] };
     groups[normalize(h[1])] = current;
     mode = 'words';
     continue;
   }
   if (/^=+$/.test(line)) { current = null; continue; }
   if (!current || !line) continue;
-  if (/^對話範例/.test(line)) {
-    mode = 'examples';
-    const rest = line.replace(/^對話範例\s*[:：]?\s*/, '');
-    if (rest) current.notes.push(rest);
+  const sec = line.match(/^[\[【]?\s*(對話範例|圖像風格)\s*[\]】]?\s*[:：]?\s*(.*)$/);
+  if (sec) {
+    mode = sec[1] === '對話範例' ? 'examples' : 'style';
+    if (sec[2]) (mode === 'style' ? current.style : current.notes).push(sec[2]);
     continue;
   }
+  if (mode === 'style') { current.style.push(line.replace(/^[*\-]\s*/, '')); continue; }
   const item = line.match(/^[*\-]\s*(.+)$/);
   if (mode === 'words') {
     if (item) current.words.push(item[1].trim());
@@ -59,4 +64,4 @@ if (!groups[want]) {
   process.exit(1);
 }
 const g = groups[want];
-console.log(JSON.stringify({ group: want, words: g.words, examples: g.examples, notes: g.notes }, null, 2));
+console.log(JSON.stringify({ group: want, words: g.words, examples: g.examples, notes: g.notes, style: g.style.join('\n') }, null, 2));
