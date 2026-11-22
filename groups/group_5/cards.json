@@ -1,0 +1,11 @@
+[
+  { "word": "tell", "zh": "告訴；講（故事）", "lines": [["Mia", "Can you tell me a story?"], ["Dan", "Sure! Once upon a time..."]] },
+  { "word": "show", "zh": "（動詞）給…看；展示", "lines": [["Dan", "Let me show you my kite."], ["Mia", "Wow! It is so big!"]] },
+  { "word": "start", "zh": "開始", "lines": [["Mia", "Are you ready to start?"], ["Dan", "Yes! Ready, set, go!"]] },
+  { "word": "sad", "zh": "難過的；傷心的", "lines": [["Dan", "Why are you sad, Mia?"], ["Mia", "I lost my ball."]] },
+  { "word": "give", "zh": "給", "lines": [["Dan", "Can you give me a cookie?"], ["Mia", "Sure. Here you are."]] },
+  { "word": "put", "zh": "放；擺", "lines": [["Mia", "Where do I put the book?"], ["Dan", "Put it on the desk, please."]] },
+  { "word": "angry", "zh": "生氣的", "lines": [["Mia", "Why are you angry, Dan?"], ["Dan", "My ice cream fell down!"]] },
+  { "word": "quiet", "zh": "（形容詞）安靜的", "lines": [["Mia", "Shh! Please be quiet."], ["Dan", "OK. The baby is sleeping."]] },
+  { "word": "new", "zh": "新的", "lines": [["Dan", "Look! I have new shoes."], ["Mia", "Wow! They are so cool!"]] }
+]
