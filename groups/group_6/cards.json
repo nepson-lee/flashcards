@@ -1,0 +1,11 @@
+[
+  { "word": "look", "zh": "看", "lines": [["Ken", "Look at the footprints!"], ["Lily", "Let's follow them!"]] },
+  { "word": "bring", "zh": "帶來；拿來", "lines": [["Lily", "Please bring the map."], ["Ken", "Sure. Here it is."]] },
+  { "word": "say", "zh": "說", "lines": [["Lily", "What do you say, Ken?"], ["Ken", "Thank you, Dr. Bo!"]] },
+  { "word": "ask", "zh": "問", "lines": [["Ken", "Can I ask you a question?"], ["Dr. Bo", "Sure. What is it?"]] },
+  { "word": "cry", "zh": "哭", "lines": [["Ken", "Don't cry, Amy."], ["Amy", "I can't find my cat."]] },
+  { "word": "everything", "zh": "每件事；一切", "lines": [["Ken", "I can see everything here!"], ["Lily", "Wow! What a big city!"]] },
+  { "word": "happy", "zh": "快樂的；開心的", "lines": [["Lily", "Happy birthday, Ken!"], ["Ken", "Thank you! I am so happy."]] },
+  { "word": "after", "zh": "在…之後", "lines": [["Sara", "Let's play after school!"], ["Ken", "OK! Let's play soccer."]] },
+  { "word": "about", "zh": "關於", "lines": [["Sara", "What's the book about?"], ["Ken", "It's about a cat and dog."]] }
+]
