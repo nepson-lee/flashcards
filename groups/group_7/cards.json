@@ -1,0 +1,11 @@
+[
+  { "word": "kind", "zh": "親切的；好心的", "lines": [["Mrs. Rabbit", "It's very kind of you."], ["Miss Butterfly", "Thank you, Mrs. Rabbit."]] },
+  { "word": "happen", "zh": "發生", "lines": [["Mrs. Rabbit", "What happened to your leg?"], ["Little Pony", "I fell yesterday."]] },
+  { "word": "hurt", "zh": "疼痛；受傷", "lines": [["Mrs. Rabbit", "Does your leg hurt?"], ["Little Pony", "It hurts, but it's OK."]] },
+  { "word": "something", "zh": "某事；某物", "lines": [["Little Bunny", "Can you say something nice about me?"], ["Mrs. Rabbit", "You gave Miss Butterfly a flower."]] },
+  { "word": "always", "zh": "總是；一直", "lines": [["Little Bunny", "Mommy, you always say nice things to your kids."], ["Mrs. Rabbit", "I love them very much!"]] },
+  { "word": "brave", "zh": "勇敢的", "lines": [["Mrs. Rabbit", "How brave you are!"], ["Little Pony", "Thank you!"]] },
+  { "word": "pick up", "zh": "撿起；拿起", "lines": [["Little Pony", "Can you pick up the carrot for me?"], ["Little Bunny", "Sure! Here you are."]] },
+  { "word": "feel", "zh": "感覺；覺得", "lines": [["Mrs. Rabbit", "How do you feel?"], ["Little Bunny", "I feel so happy!"]] },
+  { "word": "hug", "zh": "擁抱", "lines": [["Little Bunny", "Mommy, can you give me a big hug?"], ["Mrs. Rabbit", "Sure! My dear."]] }
+]
